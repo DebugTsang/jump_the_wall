@@ -1,0 +1,6 @@
+AddType text/cache-manifest .appcache
+
+<Files site.appcache>
+	ExpiresActive On
+	ExpiresDefault "access"
+</Files>

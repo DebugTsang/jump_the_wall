@@ -464,6 +464,24 @@
     window.addEventListener("load",starter,true);
 
   // WIDS Workshop: Add Offline AppCache "updateready" event listener here
+	
+	var iDB;
+	var req = mozIndexedDB.open('DBName', 1);
+	req.onupgradeneeded = function (ev) {
+	iDB.createObjectStore(
+	'store', { keyPath: 'key' });
+	};
+	req.onsuccess = function (ev) {
+	iDB = ev.target.result;
+	};
+
+	var transaction = iDB.transaction('store');
+	var store =
+	 transaction.objectStore('store');
+	var req = store.get('foo');
+	req.onsuccess = function (ev) {
+	 alert(req.result);
+	};
 
 </script>
 </head>
